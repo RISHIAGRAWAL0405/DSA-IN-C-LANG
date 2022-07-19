@@ -1,0 +1,2785 @@
+                                                                                                       DATA STRUCTURE AND ALGORITHM;
+  
+
+
+	Memory 
+1.Heap
+2.Stack
+3.main
+4.Code section
+                         STRUCTURE
+Used in defining our own datatypes
+1.Defining 
+2.Size of structure
+3.declairing the struct.
+4.accessing the members
+
+Dot is used for accessing the struct members 
+Struct is defined as funtion in any language
+
+struct card
+{
+  int face:
+  int shape:
+  int color:
+};
+int main()
+{ 
+  struct card c; //initialising 
+  c.face=1;
+  c.shape=0;
+  c.color=0;
+};
+
+struct card c={1,0,0};initialisng + declairing
+
+anaother example;
+struct card
+{
+  int face:
+  int shape:
+  int color:
+};
+
+int main()
+{
+  struct card deck[52]// array of structures
+   {
+       printf("%d",deck[0].face);
+    } 
+}
+                  POINTERS
+ 1.Why pointers??
+ 2. Declaration
+ 3.Initialization
+ 4.Dereferencing
+ 5.Dynamic allocation
+Pointer is a adress variables to access the data indirectly.
+Poiinters are used to use the heap memory:
+The size of the pointer is equal to intiger
+Pointer can asses the external file,keyboard,moniter etc.
+
+int a=10;//data variable
+int *p // adderss variable
+    p=&a;  // assignment or initilisation 
+printf("%d",a);      10
+printf("%d",*p);     10 //dereferencing 
+     
+for accessing the heap memory
+#include<stdlib.h>
+int main()
+{  
+    int *p;
+    p=(int*)malloc(5*sizeof(int)); 
+}
+                  REFERENCE
+ int main()
+ {   
+     int a=10;
+     int &r=a;
+     cout<<a;
+     r++;
+     cout<<r;   11
+     cout<<a;   11
+}          
+                               Pointer to a structure
+struct rectangle
+{
+ int length; (size=2)
+ int breath;
+};
+  int main()
+ { 
+   struct rectanglr r={10,5};
+   struct rectangle *p=&r;  //declare and initialise
+   r.length=15;
+   (*p).length=20;
+  p->length=20;
+}
+ 
+How to create an object dynamically into heap memory..
+
+struct rectangle
+{
+ int length; (size=2)
+ int breath;
+};
+  int main()
+ { 
+  struct rectanglr *p;
+  p=(struct rectangle*)malloc(sizeof(struct rectangle));
+p->length=5;
+p->breath=10;
+}
+  malloc function is an void casting so we have to do type casting
+                               FUNCTIONS 
+1. What are functions.
+2. parameter passing
+    >pass by value
+    >pass by address
+    >pass by reference
+   function is a pice of code used for doing various task
+Also known as modular programing or produral programing..
+Increase integratibility and reusability.
+C++ is an object oriented programing.
+
+int add(int a,int b) // formal parameters//
+{  
+   int c;
+   c= a+b;
+    return(c);
+} 
+int main()
+{ 
+  int x,y,z;
+  x=10;
+  y=5;
+  z=add(x,y) actual parameters.n 
+  printf("sum is %d",z);
+}
+
+
+       PARAMETER PASSING MEATHODS.
+Call by value./pass by values
+void swap(int x,int y)
+{ 
+   int temp;
+   temp=x;
+   x=y;
+   y=temp;
+ }
+int main()
+{ 
+    int a,b;
+    a=10;
+    b=20;
+    swap(a,b);
+       printf("%d %d",a,b);
+}
+this will not swap the values.
+
+Call by address.
+uses pointers
+void swap(int x,int y)
+{ 
+   int temp;
+   temp=*x;
+   *x=*y;
+   *y=temp;
+ }
+int main()
+{ 
+    int a,b;
+    a=10;
+    b=20;
+    swap(&a,&b);
+       printf("%d %d",a,b);
+}
+ 
+Call by referance 
+void swap(int &x,int &y)
+{ 
+   int temp;
+   temp=x;
+   x=y;
+   y=temp;
+ }
+int main()
+{ 
+    int a,b;
+    a=10;
+    b=20;
+    swap(a,b);
+       printf("%d %d",a,b);
+}
+here the referance is just another name of the existing variable.
+here x,y are the referance of a and b.
+Referance dosent take any type of another memory.
+& is used for assigning any varible as referance.
+
+                    ARRAY AS AN PARAMETER 
+void fun(int a[],int n)
+{ 
+   int i;
+     for(i=0;i<n;i++)
+            printf("%d",A[i]);
+}
+int main()
+ {
+   int A[5]={2,4,6,8,10};
+ fun(A,5);
+}
+
+for making return type function for array we have to use malloc function inside the function.
+                            
+
+
+
+
+
+                          STRUCTURE AS A PARAMETER 
+int area(struct rectangle x)
+{ 
+ x.length++;
+ return x.length*x.breath;
+}
+ int main()
+  { 
+      struct rectanglr r={10,5};
+       printf("%d",area(r));
+}
+
+ 
+ Call by address.
+void changelength(struct rectangle *p,int l)
+{
+  p->length=l;
+}
+int main() 
+{ 
+  struct rectangle r={10,5};
+  changelength(&r,20);
+}      
+          STRUCTURES AND FUNCTION
+
+                       DATA STRUCTURE 
+Arrangement of the data inside the main memory  is called data structure.
+Used for running any apllication.
+Without data structure we cant make application.
+Huge size data which is inactive is called data warehouse.
+Data mining is the using the data from data wharehouse.
+
+
+        Static vs Dynamic memory allocation.
+
+1. About the main memory.
+2. How to program use memory.
+3. Static Allocation.
+4. Dynamic Allocation.
+
+Memory is divided into smaller memory units that is called bits. 
+
+Difference between the stack and heap memory.
+ The memory which is alocated at the compile time is known as static or stack  memory.
+This memory is autometically created and autometically destroyed is known as stack and when the memory is deleted the activation mmemory is also deleted. 
+                           
+
+                  HEAP MEMORY.
+Heap memory should be used like resource.
+We can use the Heap memory with the help oof pointer.
+And malloc function is used for allocating the memory.
+After using that memory we can de allocate that memory.
+by using p=NULL we can release the memory.
+
+                                                PHYSICAL AND LOGICAL DATA STRUCTURE(types)
+
+1.PHYSICAL DS. - These ds. decide how the memory is allocated or organised
+ >Array.
+Contigious collection of the memory.
+If we know how much data is to be stored we can use array
+array can be created anywhare
+
+ >Linklinst.
+It conains nodes and every node contains collection of data.
+Always created into heap.
+It is dynamicaaly storage of ds.
+
+                                                   LOGICAL DATA STRUCTURE
+1.Stack        LIFO     LI(linear)
+2.Queues     FIFO     LI
+3.Trees                       NL
+4.Graph                     NL
+5.Hash table             Tabular/non tabular
+
+                                      ABSTRACT  DATA  TYPE.
+1.Representation of data 
+2.Operation on data 
+                                        
+
+
+
+
+
+
+                                                          TIME AND SPACE COMPLEXITIY(time and space usage )
+
+TIME-
+ n-If we go through each element single time then it is of n order or linear order.
+n^2= If their is nested for loop then it will be of n^2 or if every time all elements are checked twice.Then it will be of n^2.
+log(n)= if we search by doing half of the list every  time then the order or degree will be log(N)
+ 
+if we are processing all elements for the metrix then it is of n^2.
+
+We have to find if which order or space is consuming it. 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                       RECURSION 
+1.What is recursion??
+2.Example of recursion.
+3. Tracing recursion
+4.Stack used in recursion	
+5.Time complexity
+6.Recurrence relation.
+
+
+ 
+Function caliing itself is known as recursion.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                    ARRAYS
+Array are the vector variable.
+int a[5];
+Garbage values are values when the array is not assigned values.
+Traversing means visiting all the eliments.
+printf("%d",A[2]);
+printf("%d",*(A+2));
+
+                            STATIC AND DYNAMIC ARRAY
+int A[5];
+int *p;
+p=(int*)( malloc(5*size of int);
+
+Releaseing the memory.
+free(p);
+
+
+                                   Increasing size of an array.
+int *p=new int[5];
+int *q=new int[10];
+for(i=0;i<5;i++)
+{
+q[i]=p[i];
+delete []p;
+p=q;
+q=NULL;
+}
+Now array size of p is 10.
+memory of the array is continious that is why the array size cant be increased.
+                  
+
+                              2D ARRAYS.
+3 meathods for increasing size of array.
+
+int A[3][4]={{1,2,3,4},{2,9,8,5},{3,4,5,6};
+
+2.Array of pointers.
+int *A[3];
+A[0] = new int[4];
+A[1]= new int[4];
+A[2]= new int[4];
+
+3. Array inheap memeory.
+
+
+for accessing the eliments of the 2D array we have to use nasted for loop.
+
+int A[3][4]={{1,2,3,4},{2,5,4,3}{4,4,23,2}}
+
+seond meathod;
+int *A[3];
+A[0]=new int[4];
+A[1]=new int[4];
+A[2]=new int[4];
+
+3rd meathod everything in heap.
+int **a;
+a=new int*[3];
+a[0]=new int[4];
+a[1]=new int[4];
+a[2]=new int[4];
+
+
+                              ARRAY REPRESENTAION IN COMPILER
+Add(A[i])=L0+i*w
+relative formula.
+
+                                                            MAPPING OR REPRESENTATION 
+
+1.RAW MAJOR MAPPING.
+In this meathod the elements are mapped into raw by raw form.
+The addres will be converted into form of an formula to access any eliments.
+Add(A[i][j])=L0+[i*n+j]*w
+
+2.COLUMN MEJOR MAPPING.
+The eliments of the array are arranged column by column in this type of mapping.
+Add(A[i][j])=L0+[j*m+i]*w
+
+
+
+
+
+
+                                                             ARRAY ADT(ABSTRACT DATA TYPE)
+Absract data type means representation of the data and operations on data.
+Data....
+1.Array space
+2.Size
+3.length(no. of elements)
+Operations......
+>Display
+>Add(X)/Append(x)
+>insert(index,x)
+>delete
+>search
+>get
+>set
+>max/min
+>reverse()
+>shift()/rotate() 
+Length of the aaray is that the space we are using in the array.
+like we are using 5 memory eliment.
+
+int a[10]={1,2,3,4,5,6};
+
+
+            ARRAY OPERATIONS (GET SET OR MIN MAX AVG)
+1.)Get(index)
+if(index>=0 && index<length)
+   return a[index];
+2.)Set(index)
+if(index>=0 && index<length)
+   return a[index]=x;
+3.)Max()
+max=a[0];
+for (int i=1;i<length;i++)
+{
+if(a[i]>max)
+max=a[i];
+}
+
+
+                             REVERSE AND SHIFT AND ROTATION
+  
+Reverse  the array-
+2 meathods
+1).Meathod
+for(i=length-1;j=0;i>=0;i--;j++)
+{
+    b[j]=a[i];
+}
+for(i=0;i<length;i++)
+{
+a[i]=b[i];
+}
+for(i=0;j=length-1;i<j;i++;j--)
+{
+temp=a[i];
+a[i]=a[j];
+a[j]=temp;
+}
+
+
+LEFT SHIFT.
+for shifting the first  eliment is copied on the last position
+
+
+
+1
+
+
+
+1).Inserting an eliment in an sorted array.
+2).Check the array is sorted or not.
+
+int a[10]={4,8,13,16,20,25,28,33};
+int x=18;
+i=length-1;
+while(a[i]>x)
+{
+a[i+1]=a[i];
+i--;
+}
+a[i+1]=x;
+
+Sorted or not.
+  for(i=0;i<n-1;i++)
+ {
+    if(a[i]>a[i+1])
+       return false;
+ }
+return true;
+}
+
+
+NEGATIVE ONE SIDE POSITIVE ANOTHER SIDE.
+int i=0;
+j=length-1;
+while(i<j)
+{
+  while(a[i]<0){i++;}
+    if(i<j)
+       {
+           swap(a[i],a[j]);
+        }
+}
+
+                                MERGING
+1.Append
+2.Concat
+3.Compare
+4.Copy
+Merge.....
+int a[m],b[n],c[m+n];
+while(i<m&&j<n)
+int i=0,j=0,k=0;
+else
+c[k++]=b[j++];
+}
+for(;i<m;i++)
+c[k++]=a[i];
+for(;j<n;j++)
+c[k++]=b[j];
+                                        SET OPERATIONS.
+1>Union;
+2>Intersection.
+3>Difference.
+4>Set memberships.
+
+Union.........-
+
+int a[5],b[5];
+
+                                       STUDENT CHALLANGE PROBLEMS.
+
+
+
+
+                                      STRINGS.
+1.Character set/ascii codes
+2. Character array
+3.String
+4.Creating a string.
+for every character we define the numeric code.
+ASCII codes. (for english)
+UNI codes. (for others)
+
+A-65      a-97
+_              _
+_              _
+_              _
+_              _
+_
+_
+_
+Z=90       z=122
+
+char temp;
+temp='a';
+printf("%c",temp);
+
+ char x[5]={'a','b','c','d','e'};(array or char)
+char x[5]={65,66,67,68,69};// same as before//
+
+char name[10]={'j','o','h','n','\0'};
+the 5th eliment will be \0 or null char.
+
+char name[]="john";
+char*name="john";(inside heap);
+
+printf("%s",name);
+scanf("%s",name);(david)
+ 
+gets(name);//for the entire line
+
+Length of the string.
+char *s='welcome';
+int i;
+for(i=0;s[i]!='\0';i++)
+{
+}
+printf("%d",i);
+}
+
+                             CHANGING THE CASE OF THE ALPHABETS.
+
+int main(void)
+{
+char a[]="WELCOME"
+for(i=0;a[i]!='\0',i++)
+{
+a[i]=a[i]+32;
+}
+printf("%s",a);
+}
+
+	
+
+
+  FINDING LENGTH OF THE STRINGS
+
+
+int main()
+{
+  char *s="welcome";
+  int i;
+  for(int i=0;s[i]!='\0';i++)
+  {
+  }
+printf("length of the string is %d",i);
+}
+
+
+
+
+                               COUNTING NO. OF VOWELS AND CONSONENTS......
+WE HAVE TO CHECK ALLL THE ASCIIE VALUES 
+ 
+int main()
+{
+  char a[]="how are you";
+   int i;
+    for(i=0;a[i]!='\0';i++)
+     {
+        if(a[i]==' ')
+           word++;
+    }
+    printf("%d",word);
+     
+
+
+
+
+there can be white space also 
+
+
+CHECKING THE STRING IS VALID OR NOT;
+
+
+int valid(char *name)
+{
+   int i;
+    for(i=0;name[i]!='\0';i++)
+   if(!(name[i]>=65 && name[i]<=90 && 
+        
+
+
+
+
+
+
+
+                             REVERSING THE STRING;
+first we have to find the length of the string;
+int main()
+{
+char a[]="python";
+char b[7];
+for(int i=0;a[i]!='\0';i++)
+{
+}
+i=i-1;
+for(j=0;i>=0;i--;j++)
+{
+   b[j]=a[i];
+}
+  b[j]='\0';
+  printf("%s",b);
+}
+
+2ND MEATHOD;
+in the 2nd meathod we dont need an aother array
+
+We have to swap in this meathod untill i<=j; 
+
+
+
+
+
+                                  HOW TO COMPARE 2 STRINGS;
+for compairing we have to incriment i and j untill any one of string is ended.
+To find the length of the string.
+
+for(i=0;j=0;a[i]!='\0' && b[j]!='\0';i++;j++)
+{
+   if(a[i]!=b[j]);
+        break;
+}
+ if(a[i]==b[j])
+pf('equal');
+}
+else if(a[i]==b[j])
+pf("smaller")
+else pf("greater");
+}
+
+
+PALINDROME.
+We have to reverse the string and then we have to compare all the eliments of the both strings.
+Or we can compare all the elements simulaniously.
+
+
+
+
+
+
+                                            FINDING DUPLICATES STRINGS.
+1.>Compare with other letters.(same as we did in array.)
+2.>Using hashtable or counting
+3.>Using bits.
+ 
+
+HASH TABLE.
+We have to create an table from 0 to 25 and we will store 0 in that table then we will go through all the eliments of the string and subtract 97 from each of the ascii value and then we will incriment 1 for each latter. And thus if any latter is multiple time used in the string the hash table will have more then 1 for that particular alphabet.
+   
+int main()
+{
+ char a[]="finding";
+  int H[26],i;
+   for(i=0;a[i]!='\0';i++)
+    {
+      h[a[i]-97]+=1;
+     }
+      for(i==0;i<26;i++)
+       {
+         if(h[i]>1)
+             {
+                   pf("%c",i+97);
+                   pf("%d",h[i]);
+               }
+            }
+       }
+This is only for the lower case latters for upper case latters we have to make bigger hash table. 
+By performing and operator we can check that the bit is on or not.
+We have to take an another array and then we have to make that bit oon in that array and then after anding of all the eliments of both the arrays we can get that the bit is on or not.
+
+
+int main()
+{
+ char a[]="finding";
+  long int H=0,x=0;
+   for (i=0;a[i]!='\0';i++)
+ {
+  x=1;
+   x=x<<a[i]-97;
+               (102-97
+     if(x&H>0)
+   {
+         printf("%c is duplicate",a[i]);
+    }  
+  else
+         H=x H;
+  }
+ }
+
+               CHECKING IF THE 2 STRINGS ARE ANAGRAM OR NOT.
+We have to check if all the eliments or latters in first string is there in the second string or not. For this also we can use hash table we have to do 0 again aat the place of the values incrimented earlier while checking the 1st string.
+This is for if the string does not contains any duplicates.
+
+
+        PERMUTATION OF THE GIVEN STRINGS.
+*There are the n! permutation for any word if it contain n latters.
+*In this we will make an tree.
+The tree is called as space tree.
+
+
+
+	     SPECIAL MATRICES
+1.>Diagonal matrix.
+2.>Lower triangular matrix
+3.>Upper triangular matrix.
+4.>Upper triangular matrix
+5.>Tridiagonal matrix.
+6.>Band matrix
+7.>Soeplitx matrix
+8.>Sparse matrix.
+
+
+Diagonal matrix- M[i,j]=0 if i!=j;
+s
+
+
+
+
+
+
+
+      
+
+
+
+
+                                 LINKLIST
+WHY LINKED LIST??
+Array is like an bench and the linked list is like an chairs.
+
+
+WHAT IS A LINKED LIST??
+WHAT IS A NODE ?
+NODE STRUCTURE.
+CREATE A NODE.
+ACCESS A NODE.
+
+Whatis link list??
+Ans.) It is the collection of data and link to the next node.
+Node is the pointer which pointon the another eliment of the link list.
+It is created inside the heap.
+Node is the element of the link list.
+We can use the structure to define any node.
+
+For defining any node we wiill need 2 things data and an next
+struct Node
+{
+  int data;
+  struct Node *next;(self referncial structure type)
+ };
+Every node will containn 4 bits;
+HOW TO DECLARE A NODE.
+struct Node *p;
+p=(struct Node *)malloc(size of(struct Node));
+
+p=new Node;
+
+
+
+               MORE ABOUT LINKLIST;
+Syntax uded for node;
+struct Node *p,*q;
+q=p;(both will point to the same node and q will also store the address of p)
+q=p->next
+p=p->next(It will start pointing to the another node)
+Condition to check whether the pointer p is pointing on any node or not.
+if(p==NULL)
+if(p==0)
+if(!p);
+To check if p is last  noode or not;
+if(p->next==NULL)
+if(p->next!=NULL)
+
+     HOW TO DISPLAY THE LINK LIST.
+while(p!=0)
+{ 
+   printf("%d";p->data);
+  p=p->next;
+ }
+
+
+    RECURSIVE FUNCTION FOR THE LINK LIST;
+void display(struct Node *p)
+{
+  if(p!=NULL)
+  {
+   printf("%d",p->data);
+    display(p->next);
+  }
+ display(first)
+
+An stack will be created;
+It is of order o(n)
+
+
+                    ADDING ALL THE DATA OF THE LINKLIST;
+int Add(struct Node *p)
+{
+  int sum=0;
+  while(p)
+ {
+   sum=sum+p->data;
+ }
+  return(sum)
+
+
+    HOW TO FIND AN MAX AND MIN FROM THE LINK LIST.
+max(Node *p)
+{
+  int m= -32768;minint;
+   while(p)
+   {
+    if(p->data>m)
+    m=p->data;
+    p=p->next;
+    }
+return(m);
+}
+
+
+       SEARCHING IN THE LINKLIST;
+We can not perfom binary search in linklist;
+we have to do the linear search.
+Node* Search(Node *p,int key)
+{
+   while(p!=NULL)
+{
+  if(key==p->data)
+   return(p);
+    p=p->next;
+}
+return NULL;
+}
+
+
+
+
+
+             INSERTING A NEW NODE INTO AN LINKLIST;
+Node *t=new Node;
+t->data=x;
+p=first;
+for(i=0;i<pos-1;i++)
+{
+  p=p->next;
+  }
+ t->next=p->next;
+ p->next=t;
+
+It will work for every position.
+
+         CREATING A LINKLIST USING INSERT;
+
+Insert(0,8);
+Insert(1,3);
+Insert(2,6);
+Insert();
+
+
+
+	IF WE WANT TO INSERT A NODE IN LAST AND MAKE AN LINKLIST;
+
+ void InsertLast(int x)
+{
+  Node *t=new Node;
+      t->data=x;
+      t->next=NULL
+   if(first==NULL)
+   {
+     first=last=t;
+   }
+   else{
+    last->next=t;
+    last=t;
+     }
+   }
+  InsertLast(8);
+ InsertLast(3);
+ InsertLast(9);
+
+
+This program is used to make a linklist.
+
+
+
+
+        REMOVE THE ELLIMENTS FROM THE SORTED LINKLIST;
+For this we have to first jump the p over q snd then we have to move q 1 time;
+Node *p=first;
+Node *q=first->next;
+while(q!=NULL)
+{
+if(p->data!=q->data)
+  {
+    p=q; 
+     q=q->next;
+  }
+  else 
+  {
+    p->next=q->next;
+    delete q;
+     q=p->next;
+     }
+ }
+ 
+                           REVERSING A LINKLIST;
+ There are 2 meathods for reversing the  eliments;
+We can have an array and then  we will copy all eliments again in the link list and at this time we will copy into the reverse order;
+p=first;
+i=0;
+while(p!=NULL)
+ {
+   A[i]=p->data;
+   p=p->next;
+   i++;
+    }
+  p=first;i--;
+  while(p!=NULL)
+   p->data=A[i--];
+   p=p->next;
+}
+
+
+
+
+                   REVERSING USING SLIDING POINTER;
+The pointers will be simultaniously move untill the last pointer dont become NULL;
+p=first;
+q=NULL;
+r=NULL;
+ while(p!=NULL)
+  {
+     r=q;
+      q=p;
+       p=p->next;
+          q->next=r;(for the first time r is null and then thius step will help for reversing the direction for the linklist)
+    
+      }
+first=q;
+We used to prefer the reversing of the linklist through the reversing the direction  of the pointers instead of coping the data or moving the data.
+So sliding meathod is more preferable;
+
+
+
+
+
+
+                               CHECKING THE LOOP IN THE LINK LIST;
+
+We can store the address(or data if the data is uniqe) of the node if we come at that Address again then the link list contains an loop;
+
+One pointer will move slowly(1node) and one pointer will move faster(2node)
+function for this is follows;
+int isLoop(Node *f)
+Node *p,*q;
+ p=q=f;
+ do
+  {
+   p=p->next;
+   q=q->next;
+    q=q!=NULL?q->next;NULL;
+  }while(q&&p);
+  if (p==q)
+    return true;
+    else 
+      return false;
+     }
+ we can write it like this also
+   return p==q?true:false;
+     }
+
+
+
+
+
+
+
+
+                                       CIRCULAR LINK LIST;
+There are 2 meathods to representing  the circular link list.
+Using empty head;
+uling the last node pointing on the head;
+
+There are no first or last node there is the head node;
+
+
+
+                                                     DISPLAYING AN CIRCULAR LINK LIST;
+void Display(Node *p)
+do
+  {
+    printf("%d",p->data);
+     p=p->next;
+     }while(p!=Head)
+
+Display(Head)
+
+
+
+
+This can be done using an recurssive function also;
+void Display(Node *p)
+  {
+  static int flag=0;
+   if(p!=Head || flag=0)
+    {
+     flag=1;
+      prinf("%d",p->data);
+       Display(p->next);
+     }
+   flag=0;
+  }
+  
+
+Display(Head);
+
+
+
+
+
+         INSERTING AN NODE INTO AN LINKLIST;
+The code is same as we have inserted into the linear link list;
+BUT with that we can not add or insert on the head position;
+
+
+Node *p=Head;
+Node *t=new Node;
+t->data=x;
+t->next=Head;
+while(p->next!=Head)
+  {
+   p=p->next;
+   }
+  p->next=t;
+  Head=t:
+
+
+
+
+
+      DELETING FROM THE LINK LIST;
+1>Deleting Head Node
+2>Deleting a Node from the given postion
+
+Delete from the given position;
+p=Head;
+for{i=0;i<pols-2;i++)
+ {
+     p=p->next;
+    }
+ q=p->next;
+  p->next=q->next;
+   x=q->data;
+   delete q;
+   
+Deleting from the head;
+STEPS
+First move pointer to the last position
+p=Head;
+while(p->next!=Head)
+p=p->next;
+p->next=Head->next;
+x=Head->data;
+delete Head;
+Head=p->next;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                       DOUBLY LINKED LIST;
+It has link to the next node as well as to the back node;
+It is the bidirectional linklist;
+The node contains 3 things in the doubly link list;
+|PREV|DATA|NEXT|
+  CREATING THE NODE ON THE LINK LIST
+struct Node *t;
+y=new Node;
+t->prev=NULL;
+t->data=10;
+t->next=NULL;
+
+             INSEERTING IN DOUBLY LINKED LIST;
+
+There are 2 cases
+1.>BEFORE FIRST NODE
+2.>AT ANY GIVEN POSITION.
+
+Node *t=new Node;
+t->data=x;
+t->prev=NULL;
+t->next=first;
+first->prev=t;
+first=t;
+ 
+
+FOR MODIFING ON THE GIVEN POSITION WE HAVE TO MAKE 4 CHANGES;
+Node *t=new nODE;
+t->data=x;
+for(i=0;i<pos-1;i++)
+   p=p->next;
+ t->next=p->next;
+t->prev=p;
+if(p->next)
+   p->next->prev=t;
+p->next=t;
+
+
+
+                                     DELETING AN ELIMENT FROM THE DOUBLY LINKED LIST;
+1.> DELETING FROM THE FIRST POSITION ;
+p=first;
+first=first->next;
+x=p->data;
+delete p;
+if(first) first->prev=NULL;
+2.>DELETING FROM THE GIVEN POSITION;
+p=first;
+for(i=0;i<pos-1;i++)
+p=p->next;
+p->prev->next=p->next;
+if(p->next)
+p->next->prev=p->prev;
+x=p->data;
+delete p;
+
+
+
+
+            DISPLAY AND REVERSE IN LINK LIST;
+
+1DISPLAY;
+p=first;
+while(p!=NULL)
+{
+  printf("%d",p->data);
+  p=p->next;
+}
+
+
+p=first
+while(p)
+{
+  temp=p->next;
+p->next=p->prev;
+p->prev=temp;
+p=p->prev;
+if(p->next==NULL)
+first=p;
+}
+
+
+
+
+                                  CIRCULAR DOUBLY LINKED LIST;
+p=Head;
+do{
+    printf("%d",p->data);
+    p=p->next;
+ }while(p!=Head);
+
+
+
+for going to the last position of the circular doubly linked list we can use Head->prev
+
+
+
+
+
+
+              COMPARISON OF THE LINKED LIST;
+Linear singly;
+Circular singly; 
+Doubly;
+Circular doubly;
+
+
+
+
+
+
+
+
+
+
+
+
+
+             SPARCE MATRIX ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                 STACK
+1>Introduction/Applications
+2>ADT stack.
+
+Stack is the collection of the eliments.
+LIFO- Last-in First-out
+Example: one direction parking lane.
+one direction opening can;
+Railway track;
+Recursion uses a stack;
+
+
+
+Abstract data type of the stack;
+Data;
+1>Space for starting eliments
+2>Top pointer;
+Operations;
+1>push(x)
+2>pop()
+3>peek(index)
+4>stacktop
+5>isempty()
+6>is Full()
+ 
+
+
+
+
+
+
+
+
+
+
+
+                                 STACK USING ARRAY;
+struct stack
+{
+  int size;
+  int Top;
+  int *s;
+ };
+int main()
+   {
+     struct stack st;
+       printf("enter size of stack");
+           scanf("%d",&st.size);
+                st.s=new int[st.size];
+                   st.top= -1;
+
+
+
+
+
+
+
+              IMPLIMENTATION OF STACK  USING ARRAY;
+Empty
+if(Top== -1)
+Full
+if(Top==size-1)
+
+void push(stack *st,int x)
+ {
+   if(st->Top==st->size-1)
+       printf("Stack overflow);
+     else
+        {
+            st->Top++;
+             st->S[st->Top]=x;
+       }
+     }
+
+
+                                                     STACK USING LINKED LIST;
+
+struct node
+{
+   int data;
+   struct Node *next;
+  };
+    
+Empty
+if(Top==NULL)
+FULL
+Node *t=new Node;
+if(t==NULL)
+ 
+
+
+                               STACK USING LINKED LIST;
+
+void push(int x)
+{
+   Node *t=new Node;
+  if(t==NULL)
+  printf("stack overflow");
+else
+{
+  t->data=x;
+  t->next=top;
+  top=t;
+}
+}
+
+
+
+           DELETING FUNCTION
+int pop()
+  {
+      Node *p;
+       int x=-1;
+        if(Top==NULL)
+          printf("stack is empty");
+          else{
+             p=TOP;
+             TOP=TOP->next;
+             x=p->data;
+            free(p);
+ }
+  return x;
+ }
+  
+Function for giving the eliment on the given position;
+ int Peek(int pos)
+  {
+      int x=-1,i;
+      Node *p=Top;
+        for(i=0;p!=NULL&&I<pos-1;i++)
+   {
+          p=->next;
+    }
+   if(p!=NULL)
+    return p->data;
+   else
+   return-1;
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+                                           PARANTHESIS MATCHING;
+
+((a+b)*(c-d))
+
+If we have the opening brackits then an bracket is dtored into the stack and if there is a closing bracket then the it will only  check the nno of the parenthesis;
+Here exp is the given expression;
+
+struct Stack
+{
+   int size;
+  int Top;
+   char *s;
+  }; 
+
+int isBalance(char *exp)
+{
+   struct Srack st;
+     st.size=strlen(exp);
+      st.Top=-1;
+       st.s=new char[st.size];
+             for(i=0;exp[i]!='\0';i++)
+                {
+                    if(exp[i]=='(')push(&st,exp[i]);  
+                     else if(exp[i]==')')
+                     {
+                          if(isEmpty(st))return false;
+                              pop(&st);
+                    }
+             }
+            return isEmpty(st)?true;false;
+          }
+
+
+
+
+
+
+               MORE ON THE PARANTHESIS MATCHING;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                INFIX TO POST FIX CONVERSION;
+1.)What is postfix?
+2.)Why postfix?
+3.)Precedence.
+4.)Manual Conversion.
+
+1>Infix: Operand operator operand;
+  ex;a+b
+2>Prefix: opt opnd opnd.
+  eg; +ab
+
+3>Postfix: opnd opnd opt;
+   eg;ab+
+We will apply the board mass rule;
+Symbol|Precidence
++,-         |1(lowest)
+*,/         | 2
+()          | 3(highest)
+Whenever we have to make any expression we have to fully paranthesise it.
+eg. a+b*c
+(a+(b*c))
+Prefix form of the given expression is;
+(a+[*bc])
++a*bc
+Postfix form
+(a+[bc*])
+abc*+
+
+eg. a+b+c*d
+Prefix
+a+b+[*cd]
+[+ab]+[*cd]
+++ab*cd
+Postfix.
+a+b+[cd*]
+[ab+]+[cd*]
+ab+cd*+
+
+eg;(a+b)*(c-d)
+Prefix
+[+ab]*(c-d)
+[+ab]*[-cd]
+*+ab-cd
+Postfix
+[ab+]*[c-d]
+[ab+]*[cd-]
+ab+cd-*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    ASSOCIATIVITY AND UNARY OPERATORS;
+
+ASSOCIATIVITY;
+There are 2 type of associativity;
+1>Right to left.
+2>Left to right.
+SYB|PER|ASSO
++,-   | 1  |L-R
+*,/    | 2  |L-R
+^      | 3  |R-L
+--      | 4  |R-L
+()      | 5  |L-R
+The example of the right to left associativity is;
+
+(a=(b=(c=5)))
+
+eg.  a^b^c
+ (a^(b^c))=(a)^(bc)
+ Postfix
+  abc^^
+
+eg.--a
+  (-(-a))
+    (-a-)
+   a--
+
+
+eg. -a+b*logn!
+-a+b*log[n!]
+-a+b*[n!log]
+[a-]+b*[n!log]
+[a-]+[bn!log]
+ANS.>a-bn!log+
+
+
+
+
+
+
+
+                                          INFIX TO POSTFIX USING STACK;
+We have to take an stack and an postfix eliment then if there is an operator we have to store it into stack if in stack the top most eliment is in the stack has the greater or eqal presidence.
+a+b*c-d/e
+ANS.> abc*+de/-
+ 
+
+
+
+
+
+
+
+
+               INFIX TO POSTFIX CONVERSION;
+int isoperand(char x)
+{
+  if(x=='+'||x=='-'||x=='*'||x=='/')
+   return 0;
+ else
+   return 1;
+  }
+  
+int pre(char x)
+{
+   if(x=='+'||x=='-')
+  return 1;
+   else if(x=='*'||x=='/')
+     return 2;
+    return 0;
+  }
+ 
+
+
+char *covert(char *infix)
+   {
+   struct stack st;
+    char *postfix=new char[strlen(infix)+1];
+ int i=0,j=0;
+      while(infix[i]!='\0')
+  {
+     if(isoperand(infix[i]))
+     postfix[j++]=infix[i++];
+   else
+   {
+       if(pre(infix[i])>pre9stackTop(st)))
+       push(&st,infix[i++]);
+ else
+   postfix[j++]=pop(st);
+  }
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                   QUESES;
+It is logistic datastructure;
+It works on the FIFO principle;
+QUEUE ADT;
+Data needed for queue
+1.>Space for storing eliment
+2.>Front-for deletion
+3.>Rear-for insertion 
+OPERATIONS;
+ 1.>enqueue(x)
+ 2.>dequeue()
+ 3.>isEmpty()
+  4.>isFull()
+   5.>first()
+   6.>last()
+
+
+
+Queue can be represented in the form of array and linkedlist;
+
+
+
+
+                   QUEUES USING ARRAY;
+1.>Queue using-single pointers.
+2.>Queue using-front and rear;
+3.>Draw backs of Queue ussing array
+
+From 2 pointer we haave not to shift all the eliments we have to shift only one eliment.
+ initially
+front=rare= -1
+empty condition 
+if(front==rare)
+Full ocndition
+if(rare==size-1)
+
+
+                                        IMPLIMENTING QUEUE USING ARRAY.
+
+struct queue
+{
+  int size;
+  int front;
+  int rear;
+   int*q;
+}; 
+int main()
+{
+   struct queue q;
+   printf("enter size");
+   scanf("%d",&q.size);
+    q.Q=(int*)malloc(q.size*sizeof(int));
+    q.front=q.rear=-1;
+
+
+
+  ENQUEUE AND DEQUEUE FUNCTION
+void enqueue(queue *q,int x)
+ {
+   if(q->rear==q->size-1)
+        printf("it is full") ;
+     else
+      {
+          q->rear++;
+             q->Q[q->rear]=x;
+  }
+    DEQUEUE OR DELETE OPERATION;
+ void dequeue (Queue *q)
+  {
+    int x= -1;
+   is(q->front==q->rear)
+     printf("queue is empty");
+else
+{
+   q->front++;
+x=q->q[q->front];
+}
+return x;
+}
+
+ 
+
+                                                       DRAWBACKS OF THE QUEUE ON ARRAY;
+1>.Drawbacks
+2>.Solutions
+           1.>Resetting pointers
+             2.>Circular queue;
+DRAWBACKS;
+1.>We can not reuse the spaces of deleted eliments;
+2.>Every location can be used one time;
+3>Sitution where the queue is empty also and full aslo;
+SOLUTIONS;
+1.>Resetting pointers;
+If any eliment is deleted from the queue then the ponter should reset to iits position that is -1;
+
+2.>Circular queue;
+                             CIRCULAR QUEUE;
+We have to move the pointers circularly;
+
+void enqueue(struct Queue *q,int x)
+  {
+      if((q->rear+1)%q->size==q->front)
+printf("queue is full");
+else
+{
+ q->rear=(q->rear+1)%q->size;
+   q->q[q->rear]=x;
+}
+}
+
+int dequeue(struct queue *q)
+ {
+  int x=-1;
+  if(q->front==q->rear)
+        printf("queue is empty");
+ else
+ {
+   q->front=(q->front+1)%q->size;
+    x=q->Q[q->front];
+ }
+ return x;
+ }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                               QUEUE USING LINKED LIST;
+Empty condition
+if(front==NULLL)
+Full 
+Node *t=new Node;
+if(t==NULL)
+
+
+Enqueue function 
+void enqueue(int x)
+{
+  Node *t=new Node;
+  if(t==NULL)
+    printf("queue is full")
+else
+{
+  t->data=x;
+  t->next=NULL
+if(front==NULL)
+  front=rear=t;
+else
+{
+ rear->next=t;
+  rear=t;
+  }
+}
+
+DEQUEUE FUNCTION.
+int dequeue()
+{
+  intx=-1;
+Node *p;
+  if(front==NULL)
+   printf("Quwuw is Empty");
+ else
+{
+  p=front;
+  front=front->next;
+  x=p->data;
+  free(p);
+  }
+ return x;
+}
+
+
+
+
+
+                    DEQueue (DOUBLE ENDED QUEUE)
+We can insert as well as delete in DEQueue with both the pointers(rear,front)
+In DEQueue we are not strictly following the FIFO principle;
+ 
+THERE ARE 2 TYPES OF DEQUEUE
+1>INPUT RESTRICTED
+Isertion is done by only Rear;
+2>OUTPUT RESTRICTED
+Deletion is done by only front;
+
+
+
+
+            PRIORITY QUEUES; 
+1>.Limited set of Priorities;
+2>Element Priority;
+
+Eliment->A B C D E F G H I J 
+Priority->1 1  2  3  2  1 2 3 2 2
+We have to delete the q1 first and the fifo is strictly followed;
+
+
+In eliment priority the priority is given according the value of that particular eliment;
+1.>Insert in ssame order
+Delete max proprity by searching it
+2.>Insert in the increasing order of the priority
+Delete last element of the array
+
+
+
+
+                            IMPLIMENTATION OF THE QUEUE USING 2 STACKS;
+
+WHEN WE WANT TO ENQUEUE WE HAVE TO SAVE IT INTO THE S1.
+WHEN WE WANT TO DEQUEUE WE HAVE TO DELETE FROM S2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        TREES
+Terminogy;
+Tree is the collection of the nodes and vertices;
+
+
+1>Root
+
+2>Parent;
+
+3>Child
+
+4>siblings;
+
+5>Desendents;
+All the nodes below that Node is called as Descendents
+6>Ancestors;
+
+7>Degree os a Node;
+No of the direct children is called degree of the tree;
+The degree of the tree is menimun 3;
+8>Internal/External nodes;
+Also known as leaf nodes or terminal nodes;
+9>Levels;
+We count the notes in the path at any branch of the tree;
+Level starts from 1;
+10>Height;
+We count edges to calculate the height;
+Height starts form the 0;
+11>Forest;
+Collection of the tree is known as forest;
+
+
+                                                   BINARY TREE;
+
+Degree of any node can be at most 2;
+So it can have {0,1,2} childrens;
+If any Node has more than 2 childres then it is not the binary tree;
+
+Types of binary tree;
+LEFT SQUED;
+RIGHT SQUED;
+
+
+
+                                 NO. OF BINARY TREE USING N NODE;
+T(3)=5
+T(4)=14
+T(n)=2nCn/n+1
+
+Maximum height binary trees=2^(n-1)
+
+LABLED NODES;
+T(n)=2nCn*n!/n+1
+
+Height vs Nodes;
+Min Nodes n=h+1;
+Max Nodes=a(r^(k+1)-1 )/r-1;
+=2^(h+1)-1
+From these formula we can find the heights also;
+If the formula is for max node then it is of min height;
+
+
+
+NO. OF NODES IN THE BINARY TREE;
+h+1<=n<=2^(h+1)
+Height of the binary tree;
+log(n+1)-1<=h<=n-1
+the base is 2;
+
+
+
+                        RELATIONSIP BETWEEN THE INTERNAL AND EXTERNAL NODES;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                  STRICT BINARY TREE;
+1.>Strict/Proper/Complete
+2.>Height vs Nodes;
+3.>Internal vs External nodes
+
+Strict means it must have 2 or 0 children;
+It must not contain single children;
+
+FORMULA FOR THE MIN NODES;
+=2*height+1
+Maximum nodes=2^(h+1)-1;
+
+FORMULA FOR THE MIN HEIGHT AND Max. height
+Min height=log(n+1)-1
+max height h=n-1/2
+
+INTERNAL NODES VS EXTERAL NODES IN THE BINARY TREE;
+
+
+
+
+                                         M-ARY TREES;
+1.>What is n-ary tree 
+2.>Strict n-ary Tree;
+3.>Height vs Node
+4.>Internal vs External nodes;
+Here n is the degree;
+eg.>3-ary Tree{0,1,2,3}
+The n-ary tree is the tree in  which no node is more than the n children;
+
+
+STRICT N-ARY TREE;
+The node must have either 0 children or n children;
+
+
+                                         HEIGHT VS NODE ANNALYSIS FOR THE m-ARY TREE;
+If height is given then the minimum nodes n=m*h+1;
+Maximum nodes n=m^(h+1)-1/m-1;
+If nodes are given then the mnimum height h=log[(n(m-1)+1)-1]
+max height h=n-1/m
+external nodes=(m-1)*i+1
+  
+
+
+
+
+
+
+
+
+
+
+                                 REPRESENTATION OF THE BINARY TREE;
+1>ARRAY REP.
+2>LINKEDLIST REP.                                    
+
+
+   ARRAY REPRESENTSTION;
+eliment-i;
+lefft child-2*i
+right child-2*i+1
+parent-i/2
+
+
+
+
+
+                           LINKED  REPRESENTATIOMN
+struct Node
+{
+   struct *lchild;
+     int data;
+    struct Node *rchild;
+ }
+N
+If there are n nodes then the NULL POINTERS are n+1;
+
+
+
+
+                                     FULL VS COMPLETE BINARY TREE;
+ 
+                                 TREE TRAVERSALS;
+Preorder; visit(node),Preorder(left subtree),preorder(right subtree)
+(A,B,C)
+Inorder:Inorder(left),visit(node),Inorder(right)
+(B,A,C)
+Postorder: Postorder(left),postorder(right),visit(node)
+(B,C,A)
+Level order:Level by level,
+(A,B,C)
+
+
+For the big tree the we have to make the sub trees;
+
+
+
+
+Easy meathods for traversal of the tree is;
+1st meathod;
+For the pre order draw a line at the end of the tree from the left side of the root node and then connect all the nodes through the line drawn below thw tree;
+For Inorder connect the first line from the middle of the tree;
+For post order connet from the right
+
+
+
+2nd easy meathod is as follows;
+Go along the boundries and give a mark to the left side of the nodes;
+If any mark comes note it;
+For Inorder mark at the below of the node;
+For post order mark at the right side;
+
+
+
+
+
+
+
+
+
+
+                                         CREAITING A BINARY TREE USING THE LINKED REPRESENTSTION;
+We have to check weather their is a child or not if there is a chiled then we will link it to the parent Node;
+
+
+
+
+
+
+
+
+
+
+
+
+                          PROGRAM TO CREATE THE TREE;
+void creat()
+{
+    Node *p,*t;
+ int x;
+  Queue q;
+  printf("Enter root value");
+   sccanf("%d",&x);
+  root=malloc(----);
+   root->data=x;
+         root->lchild=root->rchild=0;
+     enqueue(root);
+while(!isEmpty(q))
+{
+  p=dequeue(&q);
+ printf("enter left  child");
+scanf(" %d",&x);
+ if(x!=-1)
+{
+  t=malloc(---);
+  t->data=x;
+   t->lchild=t->rightchild=0;
+  p->lchild=t;
+  enquue(t);
+ }
+ this code is for the left child and the same code is for the right child;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                PREORDER OF THE TREE TRAVERSALS;
+void preorder(Node *t)
+{
+   if(t!=NULL)
+      {
+         printf("%d",t->data);
+       preorder(t->lchild);
+       preorder(t->rchild);
+    }
+    }
+
+
+
+
+
+
+                       INORDER TREE REVERSAL;
+
+
+
+
+
+                            Iterstive Tree Traversals;
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                           BINARY SEARCH TREE;
+Useful for searching in less no. of comparisions;
+Behaviour is similar as binary search;
+Properties;
+1>No duplicates;
+2>Inorder gives sorted order 
+3>No. of BST for'n' Nodes
+
+T(n)=2nCn/n+1;
+
+
+
+                   SEARCHING IN THE BINARY SEARCH TREE;
+We have to check that the key is greater or smaller then the node data;
+If the kye is greater than the eliment must on rigth side;
+If the key is less then the data the the eliment must be on the left side keep checking untill the eliment is nit founded;
+The time taken depends on thee hight of the tree;
+
+Recursive function;
+Rsearch(Node *t,int key)
+{
+   if(t==NULL)
+   return NULL;
+   if(key== t->data)
+    return t;
+    else if(key<t->data)
+      return Rsearch(t->lchild,key);
+    else
+        return Rsearch(t->rchild,key);
+  }
+
+Without recursion;
+Node  *   search(Node *t,int key)
+{
+   while(t!=NULL)
+  {
+
+   if(key==t->data)
+      return t;
+   else if(key<t->data)
+    t=t->lchild;
+  else
+    t=t->rchild;
+  }
+return NULL;(if the key is not found then the null will be returned either we will return the requered eliment)
+ }
+
+                                          
+
+                                 INSERTING IN THE BINAARY SEAARCH TREE;
+We need an tailing pointer also so that  if t is null then  we can inseer the key eliment;
+void insert(Node *t,int key)
+{
+  Node *r=NULL,*P;
+   while(t!=NULL)
+  {
+    r=t;
+   if (key==t->data)
+      return;
+    else if(key<t->data)
+          t=t->lchild;
+        else
+         t=t->rchild;
+  }
+ p=malloc(----)p->data=key;
+ p->lchild=p->rchild=NULL;
+ p->lchild=p->rchild=NULL;
+ if(p-> data<r->data)
+r->lchild=p;
+ else r->rchild=p;
+}
+
+
+
+
+
+
+
+
+
+                        RECURSIVE INSERT IN BST;
+Node *insert(Node *p,int key)
+{
+   Node *t;
+   if(p==NULL)
+   {
+        t=malloc()
+      t->data=key;
+     t->lchild=t->rchild=NULL;
+     return t;
+ }
+  if(key<p->data)
+    p->lchild=insert(p->lchild,key);
+   else if(key>p->data)
+        p->rchild=insert(p->rchild,key);
+             return p;
+}
+
+int main()
+{
+  Node root=NULL;
+    root=insert(root,30);
+                insert(root,20);
+                 insert(root,25); 
+                                        
+
+
+
+
+
+
+
+
+
+
+
+                     CREATING THE BINARY SEARCH TREE;
+WE have to start it from the root;
+
+
+
+#include<stdio.h>
+struct Node
+{
+   struct Node *lachil;
+   int data;
+   struct Node *rchild;
+}*root=NULL;
+
+void Insert(int kry)
+{
+  struct Node *t=root;
+  struct Node *r,*p;
+   if (root==NULL)
+    {
+      p=(struct Node *)malloc(sizeof(struct Node)
+     p->data=key;
+     p->lchild=p->rchild=NULL;
+     root=p;
+     return;
+   }
+ while(t!=NULL)
+{
+ r-t;
+ if(key<t->data)
+   t=t->lchild;
+  else if(key>t->data)
+  t=t->rchi;d;
+ else
+  return;
+ }
+    p=(struct Node *)malloc(sizeof(struct Node)
+    p->data=key;
+    p->lchild=p->rchild=NULL;
+      if(key<r->data) r->lchild=p;
+     if(key<r->data)
+      r->lchild=p;
+     else r->rchild=p;
+  }
+void Inorder(struct Node*p)
+  {
+    if(p)
+    {
+       Inorder(p->lchild);
+             printf("%d",p->data);
+    Inorder(p->rchild);
+  }
+}
+struct Node *Search(int key)
+{
+  srruct Node *t=root;
+  while(t!=NULL)
+  {
+     if(key==t->data)
+       return t;
+      else if(key<t->data)
+        t=t->lchild;
+      else
+             t=t->rchild;
+   }
+  return NULL;
+}
+
+ int main()
+    struct Node *temp;
+   Insert(10);
+   Insert(5);
+   Insert(20);
+   Insert(8);
+   Insert(30);
+
+    Inorder(root);
+   printf("\n");
+   struct
+   return 0;
+   temp=Search(20);
+   if(temp!=NULL)
+       printf("eliment is found");
+     else
+        printf("eliment is not found");
+
+
+return 0;
+}
+
+
+
+
+
+
+
+
+                                       DELETING FROM THE BST;
+First search the key if it is found then delete that key if it is found;
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                       AVL TREES;
+                         balance factor=height of left subtree-height of right subtree;
+if bf<=1  then the tree is balanced
+if bf>1   imbalanced;
+
+
+  
+
+
+
+
+                                                                                   SEARCH TREE;
+             
+
+2-3 TREES;
+What are 2-3 tree;
+Insert and delete from the 2-3 tree;
+Analysis;
+Why 2-3trees;
+>2-3 trees are search tree;
+>M way search tree;(multiple way with degree 3)
+>b-tree;
+RULES
+>All leaf shoould be athe same level;
+>Every node must have n/2 tree;
+
+The middle eliment always be going in the upword node or create an anathor node for itself;
+
+The binary search tree grows downwords and other trees like 2-3 tree it grows upwords if the value can't be added then the middle eliment will pop it out and will be set in upword;
+
+
+
+
+                                              HASHING TECHNIQUE;
+
+We can make an another array of the eliments equal to the max. eliment then the elilments are stored their own index;
+The draw back of the ideal hashing is the large space consumption;
+h(x)=x;
+We can modify this function to reduce the space consumption;
+h(x)=x%10;
+When 2 keys are mapping at the same place is called as collision ;
+There are 2 meathods to resolve the collision problem;
+
+OPEN HASHING
+>Chaining
+CLOSED HASHING
+>>Open addressing
+   1.Linear probing
+    2.quadratic probing
+     3.Double Hashing
+
+
+
+
+
+
+
+
+
+
+
+                                         CHAINING;
+An Node is created where we have to store the value and if the h(x)=x%10 gives us more values at the particular place so we can do it using linked list and thus it is sorted and the search is easy for any no.
+
+
+
+
+
+
+How to delete from the list.
+First we have to search the eliment and then we can simply delete it;
+W e have to select the perfect hash function for using the hashung technique;
+
+
+
+
+
+
+
+ This program is for inserting and searching;
+Code for hashing using chaining;
+#include<stdio.h>
+#include "Chains.h"
+int hash(int key)
+ {
+   key%10;
+  }
+ 
+void Insert(struct Node *H[],int key)
+{
+  int index=hash(key);
+   SortedInsertH[index]
+}
+int main(void)
+{
+   struct Node *HT[10];
+   struct Node *temp;
+   int i;
+   for(i=0;i<10;i++)
+          HT[i]=NULL;
+  Insert(HT,12);
+  Insert(HT,22);
+  Insert(HT,42);
+   temp=Search(HT[hash(key)],key);
+    printf("%d",temp->data);
+}
+
+
+
+
+                                      LINEAR PROBING;
+1.>Insert 
+2.>Search
+3.>Annalysis
+4.>Delete;
+
+
+
+Explaination;
+h'(x)=(h(x)+f(i))%10 where f(i)=i
+here i is increasing untill the vaccent node is not avsilable;
+We try to probe linearly untill wee dosent get the empty space;
+
+The meathod will search circularly;
+
+
+
+
+
+
+	QUADRATIC PROBING;
+
+f(i)=i^2
+In this we will search in the gap of square;
+
+
+
+
+
+                              DOUBLE HASHING;
+   h1(x)=x%10
+   h2(x)=R-(x%R)
+   h'(x)=(h1(x)+i*h2(x))%10
+where  i=0,1,2,3,4,,5,6,7------
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                  GRAPHS;
+
+Graphs are defined as the collection of vertices and edges;
+INDEGREE;
+If the link is coming the Node or edge then it is the Indegree;
+OUTDEGREE;
+If there is outgoing at any edge then it is called as OUTDEGREE;
+SELF LOOP;
+If the edge is linkked by its own then this is called as self loop;
+ 
+
+G =(V,E)
+
+TYPES OF GRAPH;
+1>DIRECTED GRAPH;
+
+2>SIMPLE DIGRAPH
+3>NON-DIRECTED;
+4>NON CONNECTED GRAPH;
+Articulation point;
+If we disconnect that point then the graph is splitted into two graphs than this is called as articulation point;
+5>STRONGLY CONNECGED;
+If we can reqach any pooint on the graph then this called as strongly connected gaph;
+Path is the set of all the vertices in between a pair of vertices;
+
+Cycle if we can reach at the same vertex from which we have  started;
+TOPOLOGICAL ORDERING;
+IF the edges are arrangedd into the linear order then it is called as the topological ordering;
+
+
+The problems can be converted into the graphs and if the graph is solved then the problem is solved so the graph is very imp. for any porpouse;
+
+
+
+
+
+                          REPRESENTATION OF THE GRAPH;
+
+For representing the graph we need 2 things;
+>Set of vertices and set of vertices;
+For representing them the meathods are as follows;
+
+1>Adjacency matrix;
+The matrix is created and the raw shows the value and the column shows the place.
+The time is more in this;
+The time is order of n*n
+
+2>Adjacency list;
+This is similar like chaining meathod of the hashing technique using linklist;
+The time is less and in order on n;
+3>Compact list;
+
+G=(V,E)
+|V|=n=5
+|E|=e=7
+
+
+
+
+
+                                        REPRESENTATION OF THE DIRECTED GRAPH ;
+
+
+
+
+
+
+
+
+                                                      BREADTH FIRST SEARCH;
+Breadth first search is similar as the level order;
